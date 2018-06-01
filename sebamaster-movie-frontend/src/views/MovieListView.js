@@ -1,12 +1,15 @@
 "use strict";
 
 import React from 'react';
+//import  SearchBarComponent  from 'material-ui-search-bar';//一些元件的import进来
 
 import { MovieList } from '../components/MovieList';
-
+import Background from '../../images/palace1.jpg';
 import MovieService from '../services/MovieService';
-
-
+const sectionStyle = {
+    backgroundSize: '100% 100%',
+    backgroundImage: `url(${Background})`
+};
 export class MovieListView extends React.Component {
 
     constructor(props) {
@@ -18,7 +21,7 @@ export class MovieListView extends React.Component {
         };
     }
 
-    componentWillMount(){
+    componentWillMount() {
         this.setState({
             loading: true
         });
@@ -44,8 +47,8 @@ export class MovieListView extends React.Component {
             let movies = this.state.data;
             movies.splice(movieIndex, 1);
             this.setState({
-               data: [...movies],
-               loading: false
+                data: [...movies],
+                loading: false
             });
         }).catch((e) => {
             console.error(e);
@@ -58,7 +61,9 @@ export class MovieListView extends React.Component {
         }
 
         return (
+            <div style={sectionStyle}>
             <MovieList data={this.state.data} onDelete={(id) => this.deleteMovie(id)}/>
+            </div>
         );
     }
 }

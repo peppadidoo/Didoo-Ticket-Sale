@@ -10,6 +10,7 @@ import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 
 import UserService from "./services/UserService";
+import {SearchPageView} from "./views/SearchPageView";
 
 
 export default class App extends React.Component {//研究一下es6，可以直接用
@@ -20,7 +21,7 @@ export default class App extends React.Component {//研究一下es6，可以直�
         this.state = {
             title: 'Movie Example App',
             routes: [
-                { component: MovieListView , path: '/', exact: true},
+                { component: SearchPageView , path: '/'},
                 { component: MovieDetailView , path: '/show/:id'},
                 { render: (props) => {
                         if(UserService.isAuthenticated()) {
