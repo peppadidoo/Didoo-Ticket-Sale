@@ -59,6 +59,7 @@ export class MovieDetailView extends React.Component {//四人任务最开始的
         }
 
         return (
+
             <MovieDetail movie={this.state.movie} onDelete={(id) => this.deleteMovie(id)}/>
         );
     }

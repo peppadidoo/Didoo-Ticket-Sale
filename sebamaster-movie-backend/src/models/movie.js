@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 // Define the movie schema
 
 const MovieSchema  = new mongoose.Schema({//数据结构
+
     title: {
         type: String,
         required: true

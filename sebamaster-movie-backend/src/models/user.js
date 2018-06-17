@@ -7,14 +7,27 @@ const mongoose = require('mongoose');
 const UserSchema  = new mongoose.Schema({
     username: {
         type: String,
-        required: true//meaning
-        // unique: true
+        required: true,
+        unique:true
     },
+
     password: {
         type: String,
         required: true,
-        unique: true//不能重复，独特
-    }
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    sex: String,
+    phone: String,
+    adress: String,
+    portrait: String,
+    status: {
+        type: String,
+        enum: ['visitor', 'admin', 'attractionadmin'],
+        default:  'visitor',
+    },
 });
 
 UserSchema.set('versionKey', false);//啥意思

@@ -18,8 +18,8 @@ const login = (req,res) => {//和数据库交互，请求monggodb拿出来，在
         message: 'The request body must contain a username property'
     });
 
-    UserModel.findOne({username: req.body.username}).exec()
-        .then(user => {
+    UserModel.findOne({username: req.body.username}).exec()//UseModel schema
+        .then(user => {//user object
 
             // check if the password is valid
             const isPasswordValid = bcrypt.compareSync(req.body.password, user.password);
@@ -51,9 +51,9 @@ const register = (req,res) => {
     if (!Object.prototype.hasOwnProperty.call(req.body, 'username')) return res.status(400).json({
         error: 'Bad Request',
         message: 'The request body must contain a username property'
-    });
+    });//上面是不成功的
 
-    const user = Object.assign(req.body, {password: bcrypt.hashSync(req.body.password, 8)});
+    const user = Object.assign(req.body, {password: bcrypt.hashSync(req.body.password, 8)});//please change the password to this way
 
 
     UserModel.create(user)
@@ -89,7 +89,7 @@ const register = (req,res) => {
 
 const me = (req, res) => {
     UserModel.findById(req.userId).select('username').exec()
-        .then(user => {
+        .then(user => {//then是执行完前面的执行后面
 
             if (!user) return res.status(404).json({
                 error: 'Not Found',
@@ -107,11 +107,16 @@ const me = (req, res) => {
 const logout = (req, res) => {
     res.status(200).send({ token: null });
 };
+const list  = async (req, res) => {
 
+    const visitors = await UserModel.find({status: 'visitor'});
 
+    res.status(200).json(visitors);
+};
 module.exports = {//export出去再别的地方调用
     login,
     register,
     logout,
-    me
+    me,
+    list
 };

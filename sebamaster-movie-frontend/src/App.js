@@ -30,12 +30,12 @@ export default class App extends React.Component {//研究一下es6，可以直�
                             return (<Redirect to={'/login'}/>)
                         }} , path: '/edit/:id'},
                 { render: (props) => {
-                    if(UserService.isAuthenticated()) {
-                        return (<MovieFormView {... props} />)
-                    }
-                    else {
-                        return (<Redirect to={'/login'}/>)
-                    }}, path: '/add',},
+                        if(UserService.isAuthenticated()) {
+                            return (<MovieFormView {... props} />)
+                        }
+                        else {
+                            return (<Redirect to={'/login'}/>)
+                        }}, path: '/add',},
                 { component: UserLoginView, path: '/login'},
                 { component: UserSignupView, path: '/register'}
             ]

@@ -44,8 +44,8 @@ export class MovieListView extends React.Component {
             let movies = this.state.data;
             movies.splice(movieIndex, 1);
             this.setState({
-               data: [...movies],
-               loading: false
+                data: [...movies],
+                loading: false
             });
         }).catch((e) => {
             console.error(e);

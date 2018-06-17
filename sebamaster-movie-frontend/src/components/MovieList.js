@@ -24,4 +24,3 @@ export const MovieList = ({data, onDelete}) => (
         </DataTable>
     </Page>
 );
-

@@ -14,7 +14,7 @@ class PlainFooter extends React.Component {
         return (
             <div className={this.props.className}>
                 <hr/>
-                <p>© {new Date().getFullYear()} sebis. All rights reserved.</p>
+                <p>© {new Date().getFullYear()} DiDoo. All rights reserved.</p>
             </div>
         );
     }
@@ -26,7 +26,7 @@ export const Footer = Styled(PlainFooter)`
     left: 0;
     right: 0;
     position: fixed;
-    background: white;
+    background: green;
     > p {
         text-align: center;
         margin-top: 4px;
