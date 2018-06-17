@@ -18,7 +18,7 @@ const create = (req, res) => {
 };
 
 const read   = (req, res) => {//req,res举个例子
-    MovieModel.findById(req.params.id).exec()
+    MovieModel.findById(req.params.id).exec()//id，和route movie :/id里面差不多
         .then(movie => {
 
             if (!movie) return res.status(404).json({

@@ -1,0 +1,69 @@
+
+首页搜索    router:TA ;TA.read ;read by title  ;
+            req: const{TA.title} return TA.景点信息 ;
+            ps：在read里面 做模糊搜索
+
+景点列表   router:TA TA.read  by title 返回相应的json。ps: 筛选排序前端
+
+点进去景点详情 ：  router:TA
+                req:const{TA_id}
+                return： TA.detail 返回相应的json
+
+评论： router:comment.list
+        req:const{TA_id}
+        return:返回所有TA_id对应的comment {context, date, person}
+加评论：router:comment.addcomment
+            req:const{TA_id,context,user_id} 自己creat timestamp
+            return:在TA.comments 里面加
+                     user.comments 里面加
+
+减评论：router:comment.deletecomment
+            req:const{TA_id,context,user_id}  自己creat timestamp
+            return:在TA.comments 里面减
+                     users.comment 里面减
+
+加入购物车：router:cart.additem
+            req:const{TA_id,date,quantity,user_id}
+            return:在user的cart里面加quantity
+
+
+罗列购物车 ：router:cart.list
+              req： const{user_id}
+              return: 购物车json，里面应该又{TA_id,date,quality}
+
+删除购物车：router:cart.deleteitem
+            req:const{TA_id,date,quantity,user_id}
+            return:在user的cart里面减去quantity
+
+买的order:router:order.additem
+                    req:const{TA_id,date,quantity,user_id}
+                    return:在user的cart里面加quantity
+                           在TA相应date里面减quantity
+return order:router:order.additem
+                    req:const{TA_id,date,quantity,user_id}
+                    return:在user的order里面加quantity
+                           在TA相应date里面减quantity
+ 罗列order ：router:order.list
+               req： const{user_id}
+               return: order json，里面应该又{TA_id,date,quality}
+ checksales: router:ticket.checksales
+            req:const{ticket_id, [date]}
+            return: json quality
+
+{
+visitor managerment: my order:router order
+                       my cart: router cart
+                       my comment: router comment
+
+TA managerment: router: create ticket in pre-ticketmodel
+                       delete ticket  in ticketmodel
+                      update ticket context  in ticketmodel
+                      check sales:  router ticket.checksales {date from to, ticket_id}
+                                            return {quantity}
+
+Admin; approve tourist attration: delete ticket from pre-ticketmodel add ticket in ticketmodel
+       delete ticket
+       list ticket
+       list visitor
+       checksale:
+       }

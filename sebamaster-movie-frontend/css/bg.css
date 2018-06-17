@@ -5,11 +5,12 @@ img.bg {
 
     /* Set up proportionate scaling */
     width: 100%;
-    height: auto;
-
+    height: 100%;
+    z-index: -1;
     /* Set up positioning */
     position: absolute;
     top: 0;
+    color:white;
     left: 0;
 }
 

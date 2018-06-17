@@ -3,9 +3,8 @@
 import React from 'react';
 import SearchBar from 'material-ui-search-bar';
 import '../../css/bg.css';
-import Background from '../../images/palace1.jpg';
-
-
+import '../../css/title1style.css';
+import '../../css/title2style.css';
 export class SearchBarComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -15,10 +14,10 @@ export class SearchBarComponent extends React.Component {
     render() {
         return (
             <div>
-                <div>
-                    <h1>Discover the Beauty of the Forbidden City in Summer</h1>
-                </div>
-                <div>
+                    <h1 className="title1style" >Discover the Beauty of </h1>
+                <h1 className="title2style" >the Forbidden City in Summer </h1>
+
+                <div className="searchbarstyle">
                     <SearchBar
                         onChange={() => console.log('onChange')}
                         onRequestSearch={() => console.log('onRequestSearch')}

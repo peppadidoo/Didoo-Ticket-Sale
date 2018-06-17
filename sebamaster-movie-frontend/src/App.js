@@ -10,7 +10,6 @@ import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 
 import UserService from "./services/UserService";
-import {SearchPageView} from "./views/SearchPageView";
 
 
 export default class App extends React.Component {//研究一下es6，可以直接用
@@ -21,7 +20,7 @@ export default class App extends React.Component {//研究一下es6，可以直�
         this.state = {
             title: 'Movie Example App',
             routes: [
-                { component: SearchPageView , path: '/'},
+                { component: MovieListView , path: '/', exact: true},
                 { component: MovieDetailView , path: '/show/:id'},
                 { render: (props) => {
                         if(UserService.isAuthenticated()) {
@@ -31,12 +30,12 @@ export default class App extends React.Component {//研究一下es6，可以直�
                             return (<Redirect to={'/login'}/>)
                         }} , path: '/edit/:id'},
                 { render: (props) => {
-                    if(UserService.isAuthenticated()) {
-                        return (<MovieFormView {... props} />)
-                    }
-                    else {
-                        return (<Redirect to={'/login'}/>)
-                    }}, path: '/add',},
+                        if(UserService.isAuthenticated()) {
+                            return (<MovieFormView {... props} />)
+                        }
+                        else {
+                            return (<Redirect to={'/login'}/>)
+                        }}, path: '/add',},
                 { component: UserLoginView, path: '/login'},
                 { component: UserSignupView, path: '/register'}
             ]

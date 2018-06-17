@@ -3,7 +3,7 @@
 const http       = require('http');
 const mongoose   = require('mongoose');
 
-const api        = require('./src/api');
+const api        = require('./src/api');//also local repository
 const config     = require('./src/config');
 
 
@@ -17,8 +17,8 @@ const server = http.createServer(api);
 //Connect to the MongoDB database; then start the server
 mongoose
     .connect(config.mongoURI)
-    .then(() => server.listen(config.port))
-    .catch(err => {
+    .then(() => server.listen(config.port))//promise成功了就执行
+    .catch(err => {//不成功执行，promise
         console.log('Error connecting to the database', err.message);
         process.exit(err.statusCode);
     });

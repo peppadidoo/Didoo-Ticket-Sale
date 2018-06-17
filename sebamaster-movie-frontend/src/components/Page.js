@@ -3,6 +3,7 @@
 import React from 'react';
 
 import Header from './Header';
+import NavigationMenu from './NavigationMenu';
 import { Footer } from './Footer';
 
 
